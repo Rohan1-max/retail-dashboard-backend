@@ -26,7 +26,20 @@ router.post("/registerCar", async (req, res) => {
 })
 
 router.post('/webhook',async(req,res)=>{
+    console.log(req.body,'req body from webhook')
     res.json({message:"webhook recieved"})
+})
+
+router.post('/getRestrictedPerson',async(req,res)=>{
+    let name = req.body.searchName
+    let id = req.body.searchId
+    console.log(name,'name')
+    console.log(id,'id')
+
+    let data = await RestrictedPerson.find({name:name,rId:id})
+    console.log(data,'data')
+    res.json({data:data,message:"data fetched succesfully"})
+
 })
 
 router.post("/restrictPerson", async (req, res) => {
