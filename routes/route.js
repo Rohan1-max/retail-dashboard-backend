@@ -25,6 +25,10 @@ router.post("/registerCar", async (req, res) => {
   }
 })
 
+router.post('/webhook',async(req,res)=>{
+    res.json({message:"webhook recieved"})
+})
+
 router.post("/restrictPerson", async (req, res) => {
   const { name, gender, rId, reason, images } = req.body;
 
